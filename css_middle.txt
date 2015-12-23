@@ -1,0 +1,114 @@
+我们直接对body设置CSS样式：text-align:center
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+先说文字居中。
+此处是垂直居中，关键代码height:105px;line-height:105px;两个值要相等。
+<div style=' height:105px;line-height:105px;overflow:hidden;border:1px solid #FF0099;' >居中</div>
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+文字横向居中，关键代码text-align:center
+<div style=' height:105px;line-height:105px;overflow:hidden;border:1px solid #FF0099;text-align:center'>ju zhong</div>
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+图片居中,代码如下。
+<div style=' height:105px;width:300px;line-height:105px;overflow:hidden;border:1px solid #FF0099;text-align:center'><img src="1.png" alt="" /></div>    //但是并没雨垂直居中
+--------------------------------------------------－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+图片垂直居中，关节代码display: table-cell; vertical-align:middle;
+代码如下；
+<div style=' height:105px;width:300px;line-height:105px;overflow:hidden;border:1px solid #FF0099;text-align:center ; display: table-cell; vertical-align:middle; '><img src="1.png" alt="" /></div>
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+
+                   不知宽度的居中显示
+
+方案一、利用浮动的包裹性和相对定位百分比数据值特性,传说称之为“相对浮动”
+
+.unknow_width_center1 {
+    position:relative;
+    left:50%;
+    float:left;
+    }
+.unknow_width_center1 li {
+    position:relative;
+    right:50%;
+    z-index:2;
+    float:left
+    }
+<ul class="unknow_width_center1">
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#">6</a></li>
+</ul>
+通过给父元素设置浮动float,再设置父元素的position属性为relative和left:50%;子元素设置position:relative和left:-50%来实现水平居中。
+可以保留块级元素仍然是以display:block的形式显示,不会添加无意义的标签,不添加嵌套深度。缺点是设置了position:relative;带来了一些副作用，并且需要闭合（清除）浮动。
+
+
+方案二、利用text-align属性特性（text-align:center 对于ie6、7块级和内联级都可以水平居中。其它浏览器内联级(内联块级，文字)元素才可以水平居中，块级无效。 ）强制定义为内联 display:inline
+
+.unknow_width_center2 {
+    text-align:center;
+    padding:5px;
+    }
+.unknow_width_center2 li {
+    display:inline;
+    }
+<ul>
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+    <li><a href="#">4</a></li>
+    <li><a href="#">5</a></li>
+    <li><a href="#">7</a></li>
+    <li><a href="#">8</a></li>
+    <li><a href="#">9</a></li>
+    <li><a href="#">10</a></li>
+ </ul>
+将子元素设置为内联居中，那么大家都知道的display:inline内联元素宽高是不可以设定的，局限性太大，不宜使用。
+
+方案三、利用table的属性特性
+
+.unknow_width_center3{
+    margin:0 auto
+}
+ .unknow_width_center3 ul {
+    overflow:hidden;
+    *zoom:1
+    }
+.unknow_width_center3 ul li {
+    float:left;
+    }
+<table class="unknow_width_center3">
+<tr>
+    <td>
+        <ul>
+            <li><a href="#">1</a></li>
+            <li><a href="#">2</a></li>
+            <li><a href="#">3</a></li>
+            <li><a href="#">4</a></li>
+            <li><a href="#">5</a></li>
+            <li><a href="#">7</a></li>
+            <li><a href="#">8</a></li>
+            <li><a href="#">9</a></li>
+            <li><a href="#">10</a></li>
+        </ul>
+    </td>
+</tr>
+</table>
+是使用table作为容器的方法来实现。添加了无意义的标签。Table标签本身并不是块级元素,当我们不设置table的宽度的话,他里面的宽度 是由他内部元素的宽度撑起来的。但即使我们没有设置table的宽度,直接设置table的外边距margin:0 auto;就可以实现水平居中了!这样我们就可以通过设置table水平居中,间接使里面的内容居中。
+
+方案四、利用内联块display:inline-block的text-align属性
+
+.unknow_width_center4 {
+    text-align:center
+    }
+.unknow_width_center4 ul li {
+    display:inline-block;
+    *display:inline;
+    *zoom:1;
+    }
+<ul class="unknow_width_center4 ">
+    <li><a href="#">1</a></li>
+    <li><a href="#">2</a></li>
+    <li><a href="#">3</a></li>
+</ul>
+IE6/7下直接设置display:inline-block的居中无效，这里在IE6/7下设置了display:inline，神奇的是竟然 可以设置宽高及其垂直方向的内外边距。缺点是display:inline-block会引起一些间隙，当然有看起来碍眼解决方案。
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
