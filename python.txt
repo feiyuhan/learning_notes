@@ -1,0 +1,38 @@
+''' 三引号使得字符串中可以使用双引号和单引号
+" 单引号可以在双引号中使用，输出为一个单引号，有种一级压一级的感觉
+单引号和双引号的效果一样。。。
+\ 反斜杠为转移字符，用于输出那些个有含义的字符
+if something :
+    something
+elif something :
+    something
+else :
+    something
+
+while i :
+    something
+    i--
+something
+
+for i in range(1,5) :
+    something
+
+for i in range(1,6,2) :
+    something
+
+＃第三个数为步长。而且第17排中，i只会到4，不会到5
+def hello():
+    something
+
+def hello(a,b):
+    something
+＃形参不需要带类型
+
+global x
+#将x变为全局变量
+
+say('字符串'，4)
+#将字符串三个字打印4遍
+
+只有在形参表末尾的那些参数可以加上默认数值，例如，def hello(a,b=4) : 是正确的，而def hello(a-1,b) :是错误的
+有名字的形参可以被称为关键字，例如def hello(a,b,c,d): 可以这样使用，hello(a=4,c=5)不一定需要按照顺序和空格拉力
