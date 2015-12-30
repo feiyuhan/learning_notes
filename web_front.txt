@@ -1,0 +1,1 @@
+<meta name="viewport" content="width=device-width, initial-scale=1">  <!--  用来将网页的宽度直接设置为屏幕的宽度,这样就可以直接在移动端使用，并且可以占满整个屏幕 -->
