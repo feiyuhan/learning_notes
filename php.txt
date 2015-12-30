@@ -1,0 +1,1 @@
+sudo apachectl -k start -e DEBUG       // 用来展示apache加载的文件信息，打开debug
