@@ -1,1 +1,53 @@
 <meta name="viewport" content="width=device-width, initial-scale=1">  <!--  用来将网页的宽度直接设置为屏幕的宽度,这样就可以直接在移动端使用，并且可以占满整个屏幕 -->
+
+css设置一张图拉伸填满整个窗口，我们可以通过给这个图片设置width，height都给他们100%的高度和宽度，然后在就能看到填满全屏了
+
+只有png，gif格式的图片可以保证透明背景，但是gif只有256色，所以png的更加清晰
+
+-----------------------------fullpage.js-----------------------------------------
+首先是一个最外层的div框着并且设置id,假如为page，在js文件中加入这个$(function(){$('#page').fullpage();});因为是基于jquery，所以取址就可以直接使用jquery的规则，每一个页面设置一个class＝'section'，这个页面其余的东西直接加在这个页面的标签里面。
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+
+竖排显示文字的方法，很多，最简单的莫过于<p>w</p></br>,但是简单也意味着有太多不足。还有就是给定div的宽度，然后再字体的宽度大于这个宽度的一半，就会自动竖排。这是我自己想到两种最简单的方法。 当然可以看这个网址http://www.ludou.org/the-easiest-way-to-create-vertical-text-with-css.html ，讲了6种方法
+取其中最好的－－－－－－－－－－－
+
+当给父级元素指定 overflow: hidden 的时候，父元素就会扩展以包含浮动  这个方法就类似这个，关键是使用了 em，并给每个字母之间添加了空格。
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset=utf-8 />
+<title>Vertical Text</title>
+
+<style>
+  h1 {
+    width: 1em;
+    font-size: 40px;
+    letter-spacing: 40px; /* arbitrarily large letter-spacing for safety */
+  }
+</style>
+</head>
+<body>
+  <h1> N e t t u t s </h1>
+</body>
+</html>
+漂亮又整洁，对不对？并且，这种方法可以给你的文字指定任意的font-size，因为我们使用了em，它就相当于选择字体的x-height，给我们提供了更多的灵活性。
+但是，你是否又一次想起，有时一行中会有不止一个字母。可实际情况是，你可以安全使用这种方法，因为我已经指定了一个相当大的letter-spacing，以确保一行只会有一个字母。
+到目前为止，据我所知，这是最好的跨浏览器兼容的解决方案。
+－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－－
+
+关于透明，背景图片是调整不了透明度的，你只能调整容器的透明度来实现容器内的背景，内容也出现透明度。
+opacity:0.5; //整个页面透明
+filter:"alpha(opacity=50)"; //这个表明以一个曲线透明
+-ms-filter:"alpha(opacity=50)"; //旧版IE
+－－－－－－－－－－－－－－－－－－－－－－－
+&nbsp 加空格
+
+改变背景的位置：
+background-position:数值1 数值2；
+数值1是控制左右宽度
+数值2是控制上下高度
+底部右下可以写：background-position:right bottom;
+------------------------------------------------------
+
+子代选择器： nth-child(n) n从1开始，而且nth之前需要指出具体的标签的类型。这样的.paragraph p:nth-child(1) 此为class为paragraph的标签下的第一个p标签
+E > F 表示选择E标签下的所有的F标签，忽略所有的嵌套，直接作用于最里面的F标签
