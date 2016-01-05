@@ -51,3 +51,34 @@ background-position:数值1 数值2；
 
 子代选择器： nth-child(n) n从1开始，而且nth之前需要指出具体的标签的类型。这样的.paragraph p:nth-child(1) 此为class为paragraph的标签下的第一个p标签
 E > F 表示选择E标签下的所有的F标签，忽略所有的嵌套，直接作用于最里面的F标签
+http://www.uisdc.com/css-selector 这个的讲解很详细，应该是很全。。。
+----------------------------------------------------------------------
+使用swiper.js的时候，需要注意的是加上第一行的那个代码，这样才会是移动端的，然后需要注意的就是如果某一个页面的高度定死了，那么只能是这个高度了，妈个鸡，我想说的是，如果一个页面需要使用滚动条的话，设置的高度没有到达你所需要的高度的话，就只能在那个范围内移动，比如你不设置的话，久默认了你的高度只有设备的高度，那么问题来了，如果你的文字(假设是文字好了)的总长度要是高于那个高度，那么就会被隐藏，所以你设置的高度一定要高于你整个页面，当然前提是你需要滚动。
+关于swiper.js页面内不同的变换方式：
+<div class = "swiper-container section1">
+    <div class="swiper-wrapper">
+        <div class = "swiper-slide"></div>
+        <div class = "swiper-slide"></div>
+        <div class = "swiper-slide"></div>
+        <div class = "swiper-slide">
+            <div class = "swiper-container section2">
+                <div class = "swiper-wrapper">
+                    <div class = "swiper-slide"></div>
+                    <div class = "swiper-slide"></div>
+                    <div class = "swiper-slide"></div>
+                    <div class = "swiper-slide"></div>
+                </div>
+            </div>
+        <div>
+    <div>
+</div>
+
+<script>
+var swiper = new Swiper('.section1', {
+    code
+});
+var swiper = new Swiper('.section2', {
+    code
+});
+</script>
+-------------------------------------------------------------
